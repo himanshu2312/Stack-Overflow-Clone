@@ -1,0 +1,57 @@
+.ask-ques{
+      min-height: 110vh;
+      background-color: #f1f2f3;
+}
+
+.ask-ques-container{
+      margin: auto;
+      max-width: 1000px;
+}
+
+.ask-ques-container h1{
+      padding: 70px 0px 10px 0px;
+}
+
+.ask-form-container{
+      padding: 20px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 10px;
+      box-shadow: 3px 3px 10px rgb(0 0 0 / 5%), -3px -3px 10px rgb(0 0 0 / 5%);
+}
+
+.ask-form-container label h4{
+      margin-bottom: 0%;
+}
+
+.ask-form-container label p{
+      margin: 0%;
+      font-size:  13px;
+      padding: 3px 0px;
+}
+
+.ask-form-container label textarea,
+.ask-form-container label input{
+      padding: 10px;
+      border: solid 1px #0000003e;
+      font-family: 'Roboto', sans-serif;
+      width: 90%;
+      min-height: 10px;
+      resize: vertical;
+}
+
+.submit-btn{
+      margin-top: 20px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color:  #009dff;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+}
+
+.submit-btn:hover{
+      background-color: #0086d8;
+}

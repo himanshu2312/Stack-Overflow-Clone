@@ -1,0 +1,15 @@
+.home-container-1{
+      min-height: 120vh;
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      justify-content:flex-start;
+      margin: 0%  auto;
+}
+
+.home-container-2{
+      max-width: 1200px;
+      width: calc(100%);
+      padding: 24px;
+      box-sizing: border-box;
+}
