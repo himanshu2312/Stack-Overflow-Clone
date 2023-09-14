@@ -17,7 +17,7 @@ export default function Navbar() {
     dispatch({type:'LOGOUT'})
     navigate("/")
     dispatch(setCurrentUser(null));
-  },[dispatch,navigate])  
+  },[dispatch,navigate])
   
   useEffect(()=>{
     const token=User?.token
@@ -28,7 +28,7 @@ export default function Navbar() {
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
-  },[dispatch,User,handleLogout])
+  },[dispatch,User?.token,handleLogout])
 
   return (
     <div>
