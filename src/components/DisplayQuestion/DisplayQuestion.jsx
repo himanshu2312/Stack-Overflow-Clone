@@ -57,7 +57,7 @@ export default function DisplayQuestion() {
     dispatch(voteQuestion(id,'down',user.result._id))
   }
 
-  const url="http://localhost:3000"
+  const url="https://stack-overflow-2312.netlify.app"
   const location = useLocation();
   const handleShare=()=>{
     copy(url+location.pathname)

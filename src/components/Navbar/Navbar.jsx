@@ -1,4 +1,4 @@
-import {React, useEffect} from "react";
+import {React, useEffect,useCallback} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png"
@@ -13,11 +13,11 @@ export default function Navbar() {
   var User=useSelector((state)=>(state.currentUserReducer))
   
   const navigate=useNavigate();
-  const handleLogout=()=>{
+  const handleLogout= useCallback(()=>{
     dispatch({type:'LOGOUT'})
     navigate("/")
     dispatch(setCurrentUser(null));
-  }
+  },[dispatch,navigate])  
   
   useEffect(()=>{
     const token=User?.token
@@ -28,7 +28,7 @@ export default function Navbar() {
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
-  },[dispatch])
+  },[dispatch,User,handleLogout])
 
   return (
     <div>

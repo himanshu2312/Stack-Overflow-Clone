@@ -16,7 +16,7 @@ This website is a question forum and made to look like Stack Overflow.
 Fork and clone the repo and follow the below steps:
 
 - Install Node.js
-- Open client and server directories in VS code
+- Open client directories in VS code
 - Install Dependencies using the command
 
 ```
@@ -31,7 +31,7 @@ npm start
 
 ## Live Link for the website:
 
-[Click here]()
+[Click here](https://stack-overflow-2312.netlify.app)
 
 ## Credits
 
