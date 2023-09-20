@@ -1,3 +1,7 @@
+## Live Link for the website:
+
+[Click here](https://stack-overflow-2312.netlify.app)
+
 # Stack Overflow Clone
 
 This website is a question forum and made to look like Stack Overflow.
@@ -29,9 +33,6 @@ npm install
 npm start
 ```
 
-## Live Link for the website:
-
-[Click here](https://stack-overflow-2312.netlify.app)
 
 ## Credits
 
