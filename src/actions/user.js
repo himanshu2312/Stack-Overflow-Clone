@@ -16,6 +16,16 @@ export const updateUserBio=(id,userData)=>async(dispatch)=>{
             dispatch({type:'UPDATE_USER',payload:data})
       }
       catch(e){
-            alert("Profile Edit failed try again!!")
+            alert("Profile Edit failed, try again!!")
+      }
+}
+
+export const updateProfileImage=(id,image)=>async(dispatch)=>{
+      try{
+            const data = await api.updateProfileImage(id,image);
+            dispatch({type:'UPDATE_USER',payload:data})
+      }
+      catch(e){
+            alert("Profile Image Upload failed, try again!!")
       }
 }

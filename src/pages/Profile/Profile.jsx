@@ -27,15 +27,26 @@ export default function Profile() {
         <section>
           <div className="user-details-container">
             <div className="user-details">
-              <Avtar
-                backgroundColor="purple"
-                px="40px"
-                py="30px"
-                color="white"
-                fontSize="50px"
-              >
-                {profile?.name?.charAt(0).toUpperCase()}
-              </Avtar>
+              {profile?.profileImage?.data ? (
+                <Avtar px="0px" py="0px">
+                  <img
+                    src={URL.createObjectURL(profile?.profileImage?.data)}
+                    alt="profile Image"
+                    width="120px"
+                    height="120px"
+                  />
+                </Avtar>
+              ) : (
+                <Avtar
+                  backgroundColor="purple"
+                  px="40px"
+                  py="30px"
+                  color="white"
+                  fontSize="50px"
+                >
+                  {profile?.name?.charAt(0).toUpperCase()}
+                </Avtar>
+              )}
               <div className="user-name">
                 <h1>{profile?.name}</h1>
                 <p>
@@ -44,13 +55,17 @@ export default function Profile() {
                 </p>
               </div>
             </div>
-            {currentUser?._id !== id && (
+            {currentUser?._id === id && (
               <ul className="toolList">
                 <li>
                   <button
                     type="button"
                     className="edit-profile-btn"
-                    onClick={() => setEdit(true)}
+                    onClick={() => {
+                      setUploadAvtar(false);
+                      setEdit(true);
+                      setUpload(false);
+                    }}
                   >
                     <FontAwesomeIcon icon={faEdit} /> Profile
                   </button>
@@ -59,7 +74,11 @@ export default function Profile() {
                   <button
                     type="button"
                     className="edit-profile-btn"
-                    onClick={() => setUpload(true)}
+                    onClick={() => {
+                      setUpload(true);
+                      setEdit(false);
+                      setUploadAvtar(false);
+                    }}
                   >
                     <FontAwesomeIcon icon={faEdit} /> Photo
                   </button>
@@ -68,7 +87,11 @@ export default function Profile() {
                   <button
                     type="button"
                     className="edit-profile-btn"
-                    onClick={() => setUploadAvtar(true)}
+                    onClick={() => {
+                      setUpload(false);
+                      setEdit(false);
+                      setUploadAvtar(true);
+                    }}
                   >
                     <FontAwesomeIcon icon={faEdit} /> Avtar
                   </button>
@@ -77,7 +100,7 @@ export default function Profile() {
             )}
           </div>
           {Edit ? (
-            <EditForm user={profile} setEdit={setEdit} />
+            <EditForm user={currentUser} setEdit={setEdit} />
           ) : (
             <ProfileBio data={profile} />
           )}

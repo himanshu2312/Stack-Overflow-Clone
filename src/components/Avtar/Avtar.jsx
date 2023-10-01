@@ -4,7 +4,7 @@ export default function Avtar({ children, backgroundColor, px, py, color, border
   const avt_style = {
     padding: `${py} ${px}`,
     borderRadius,
-    backgroundColor,
+    backgroundColor: backgroundColor || "white",
     color: color || "black",
     fontSize,
     textAlign: "center",

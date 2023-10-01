@@ -22,3 +22,5 @@ export const voteQuestion=(id,value,userId)=> API.patch(`/questions/vote/${id}`,
 
 export const postAnswer=(id,answerData)=>API.patch(`/answers/post/${id}`,answerData);
 export const deleteAnswer=(id,answerData)=>API.patch(`/answers/delete/${id}`,answerData);
+
+export const updateProfileImage=(id,image)=>API.patch(`/user/profileImage/${id}`, image);
