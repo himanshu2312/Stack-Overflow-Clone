@@ -19,17 +19,26 @@
       color: #7e7e7e;
 }
 
+.toolList{
+      list-style-type: none;
+      align-items: center;
+}
+
 .edit-profile-btn {
-      padding: 8px 10px;
+      padding: auto;
       border: solid 1px #7e7e7e;
       border-radius: 2px;
       background-color: white;
       cursor: pointer;
       transition: 0.3s;
+      margin-bottom: 5px;
 }
-
 .edit-profile-btn:hover {
       background-color: #f5f9fc;
+}
+
+.discard-btn{
+      margin: 0px 45px;
 }
 
 .edit-profile-title {
