@@ -23,6 +23,7 @@ export const updateUserBio=(id,userData)=>async(dispatch)=>{
 export const updateProfileImage=(id,image)=>async(dispatch)=>{
       try{
             const data = await api.updateProfileImage(id,image);
+            console.log("return data from server:",data)
             dispatch({type:'UPDATE_USER',payload:data})
       }
       catch(e){

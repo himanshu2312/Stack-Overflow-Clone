@@ -1,19 +1,18 @@
 import { React, useState } from "react";
-// import { updateProfileImage } from "../../actions/user";
-// import { useDispatch } from "react-redux";
-// import { useParams } from "react-router-dom";
+import { updateProfileImage } from "../../actions/user";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function UploadImage({ setUpload }) {
-  const [selectedImage, setSelectedImage] = useState(null);
-  // const dispatch = useDispatch();
-  // const { id } = useParams();
+  const [image, setImage] = useState(null);
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      if (selectedImage) {
-        // dispatch(updateProfileImage(id,selectedImage));
-        alert("Not implemented yet!!")
+      if (image) {
+        dispatch(updateProfileImage(id,image));
         setUpload(false);
       } else {
         alert("No image selected. Please select a Image to upload");
@@ -27,12 +26,12 @@ export default function UploadImage({ setUpload }) {
       <h1 className="edit-profile-title">Upload New Profile Picture</h1>
       <h2 className="edit-profile-title-2">Public Information</h2>
       <form onSubmit={handleSubmit} className="edit-profile-form">
-        {selectedImage && (
+        {image && (
           <>
             <div>
-              <p>Selected Image: {selectedImage.name}</p>
+              <p>Selected Image: {image.name}</p>
               <img
-                src={URL.createObjectURL(selectedImage)}
+                src={URL.createObjectURL(image)}
                 alt="Selected File"
                 width="200"
                 height="200"
@@ -41,20 +40,20 @@ export default function UploadImage({ setUpload }) {
             <button
               type="button"
               className="edit-profile-btn discard-btn"
-              onClick={(e) => setSelectedImage(null)}
+              onClick={(e) => setImage(null)}
             >
               Discard Image
             </button>
           </>
         )}
 
-        {!selectedImage && (
+        {!image && (
           <input
             type="file"
             id="image"
             accept="image/*"
             className="edit-profile-btn"
-            onChange={(e) => setSelectedImage(e.target.files[0])}
+            onChange={(e) => setImage(e.target.files[0])}
           />
         )}
         <br />
