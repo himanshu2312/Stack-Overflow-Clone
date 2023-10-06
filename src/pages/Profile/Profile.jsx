@@ -27,11 +27,11 @@ export default function Profile() {
         <section>
           <div className="user-details-container">
             <div className="user-details">
-              {profile?.profileImage?.data ? (
+              {profile?.profileImage ? (
                 <Avtar px="0px" py="0px">
                   <img
-                    src={URL.createObjectURL(profile?.profileImage?.data)}
-                    alt="profile Image"
+                    src={profile?.profileImage}
+                    alt="DP"
                     width="120px"
                     height="120px"
                   />
@@ -59,6 +59,7 @@ export default function Profile() {
               <ul className="toolList">
                 <li>
                   <button
+                    href="#edit-form"
                     type="button"
                     className="edit-profile-btn"
                     onClick={() => {
@@ -90,7 +91,7 @@ export default function Profile() {
                     onClick={() => {
                       setUpload(false);
                       setEdit(false);
-                      setUploadAvtar(true);
+                      setUploadAvtar(false);
                     }}
                   >
                     <FontAwesomeIcon icon={faEdit} /> Avtar
@@ -99,12 +100,14 @@ export default function Profile() {
               </ul>
             )}
           </div>
-          {Edit ? (
-            <EditForm user={currentUser} setEdit={setEdit} />
-          ) : (
-            <ProfileBio data={profile} />
-          )}
-          {Upload && <UploadImage setUpload={setUpload} />}
+          {Edit ?
+            <EditForm id="edit-form" user={profile} setEdit={setEdit} /> : (
+              Upload ?
+                <UploadImage setUpload={setUpload} /> : (
+                  UploadAvtar ?
+                    <></> :
+                    <ProfileBio data={profile} />)
+            )}
         </section>
       </div>
     </div>

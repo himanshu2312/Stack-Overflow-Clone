@@ -10,7 +10,10 @@ import { setCurrentUser } from "../../actions/currentUser.js";
 
 export default function Navbar() {
   const dispatch = useDispatch();
-  var User = useSelector((state) => state.currentUserReducer);
+  var currentUser = useSelector((state) => state.currentUserReducer);
+  
+  const users = useSelector((state) => state.usersReducer);
+  const profile = users?.filter((user) => user._id === currentUser?.result?._id)[0];
 
   const navigate = useNavigate();
   const handleLogout = useCallback(() => {
@@ -20,7 +23,7 @@ export default function Navbar() {
   }, [dispatch, navigate]);
 
   useEffect(() => {
-    const token = User?.token;
+    const token = currentUser?.token;
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
@@ -28,7 +31,7 @@ export default function Navbar() {
       }
     }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
-  }, [dispatch, User?.token, handleLogout]);
+  }, [dispatch, currentUser?.token, handleLogout]);
 
   return (
     <div>
@@ -55,37 +58,37 @@ export default function Navbar() {
               className="search-icon"
             />
           </form>
-          {User === null ? (
+          {currentUser === null ? (
             <Link to="/auth" className="nav-item nav-links">
               Log in
             </Link>
           ) : (
             <>
               <Link
-                to={`/users/${User.result._id}`}
+                to={`/users/${currentUser.result?._id}`}
                 style={{ textDecoration: "none" }}
               >
-                {User?.result?.profileImage?.data ? (
+                {profile?.profileImage ? (
                   <Avtar px="0px" py="0px" borderRadius="50%">
-                    <img
-                      src={URL.createObjectURL(
-                        User?.result?.profileImage?.data
-                      )}
+                    <img style={{ borderRadius: "50%" }}
+                      src={profile?.profileImage}
                       alt="DP"
-                      width="30px"
-                      height="30px"
+                      width="40px"
+                      height="40px"
                     />
                   </Avtar>
                 ) : (
-                  <Avtar
+                  <div width="40px" height="40px">
+                    <Avtar
                     backgroundColor="#009dff"
                     px="11px"
                     py="6px"
                     borderRadius="50%"
                     color="white"
                   >
-                    {User?.result?.name?.charAt(0).toUpperCase()}
+                    {profile?.name?.charAt(0).toUpperCase()}
                   </Avtar>
+                  </div>
                 )}
               </Link>
               <button className="nav-item nav-links" onClick={handleLogout}>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const API=axios.create({baseURL:'https://stack-overflow-2312.onrender.com'}) // for deployment api_Url
-const API=axios.create({baseURL:'http://localhost:5000'}) // for local api_Url
+const API=axios.create({baseURL:'https://stack-overflow-2312.onrender.com'}) // for deployment api_Url
+// const API=axios.create({baseURL:'http://localhost:5000'}) // for local api_Url
 
 API.interceptors.request.use((req)=>{
       if(localStorage.getItem('Profile')){
@@ -23,4 +23,4 @@ export const voteQuestion=(id,value,userId)=> API.patch(`/questions/vote/${id}`,
 export const postAnswer=(id,answerData)=>API.patch(`/answers/post/${id}`,answerData);
 export const deleteAnswer=(id,answerData)=>API.patch(`/answers/delete/${id}`,answerData);
 
-export const updateProfileImage=(id,image)=>API.patch(`/user/profileImage/${id}`, {image});
+export const updateProfileImage=(image)=>API.patch("/user/profileImage", {image});

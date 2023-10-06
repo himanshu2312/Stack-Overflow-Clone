@@ -1,24 +1,35 @@
 import { React, useState } from "react";
 import { updateProfileImage } from "../../actions/user";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
 export default function UploadImage({ setUpload }) {
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
-  const { id } = useParams();
+
+  const handleImageChange = (e) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setImage(reader.result);
+    }
+    reader.onerror = (err) => {
+      console.log(err);
+    }
+
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
       if (image) {
-        dispatch(updateProfileImage(id,image));
+        dispatch(updateProfileImage(image));
         setUpload(false);
       } else {
         alert("No image selected. Please select a Image to upload");
       }
-    } catch (e) {
-      alert(e);
+    }
+    catch (err) {
+      alert(err);
     }
   };
   return (
@@ -31,7 +42,7 @@ export default function UploadImage({ setUpload }) {
             <div>
               <p>Selected Image: {image.name}</p>
               <img
-                src={URL.createObjectURL(image)}
+                src={image}
                 alt="Selected File"
                 width="200"
                 height="200"
@@ -53,7 +64,7 @@ export default function UploadImage({ setUpload }) {
             id="image"
             accept="image/*"
             className="edit-profile-btn"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => handleImageChange(e)}
           />
         )}
         <br />

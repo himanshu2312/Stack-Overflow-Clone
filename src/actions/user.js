@@ -12,19 +12,18 @@ export const fetchAllUsers=()=> async(dispatch)=>{
 
 export const updateUserBio=(id,userData)=>async(dispatch)=>{
       try{
-            const {data}=await api.updateUser(id,userData);
-            dispatch({type:'UPDATE_USER',payload:data})
+            const {data} = await api.updateUser(id,userData);
+            dispatch({type:'UPDATE_USER',payload:data});
       }
       catch(e){
             alert("Profile Edit failed, try again!!")
       }
 }
 
-export const updateProfileImage=(id,image)=>async(dispatch)=>{
+export const updateProfileImage=(image)=>async(dispatch)=>{
       try{
-            const data = await api.updateProfileImage(id,image);
-            console.log("return data from server:",data)
-            dispatch({type:'UPDATE_USER',payload:data})
+            const {data} = await api.updateProfileImage(image);
+            dispatch({type:'UPDATE_USER',payload:data});
       }
       catch(e){
             alert("Profile Image Upload failed, try again!!")
