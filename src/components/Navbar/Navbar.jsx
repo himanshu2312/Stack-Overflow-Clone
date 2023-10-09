@@ -69,12 +69,11 @@ export default function Navbar() {
                 style={{ textDecoration: "none" }}
               >
                 {profile?.profileImage ? (
-                  <Avtar px="0px" py="0px" borderRadius="50%">
+                  <Avtar px="none" py="none" backgroundColor="#f8f9f9">
                     <img style={{ borderRadius: "50%" }}
                       src={profile?.profileImage}
                       alt="DP"
-                      width="40px"
-                      height="40px"
+                      width="50px"
                     />
                   </Avtar>
                 ) : (
@@ -91,7 +90,7 @@ export default function Navbar() {
                   </div>
                 )}
               </Link>
-              <button className="nav-item nav-links" onClick={handleLogout}>
+              <button  type="button" className="nav-item nav-links" onClick={handleLogout}>
                 Log out
               </button>
             </>

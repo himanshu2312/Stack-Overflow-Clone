@@ -10,7 +10,8 @@ export default function Avtar({ children, backgroundColor, px, py, color, border
     textAlign: "center",
     cursor: cursor || "null",
     textDecoration: "none",
-    border: "1px solid white"
+    border: "1px solid #f8f9f9",
+    margin: "0px"
   };
   return <div style={avt_style}>{children}</div>;
 }
