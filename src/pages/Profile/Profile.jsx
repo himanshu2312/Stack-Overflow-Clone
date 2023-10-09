@@ -18,7 +18,6 @@ export default function Profile() {
   const currentUser = useSelector((state) => state.currentUserReducer)?.result;
   const [Edit, setEdit] = useState(false);
   const [Upload, setUpload] = useState(false);
-  const [UploadAvtar, setUploadAvtar] = useState(false);
 
   return (
     <div className="home-container-1">
@@ -33,7 +32,6 @@ export default function Profile() {
                     src={profile?.profileImage}
                     alt="DP"
                     width="120px"
-                    height="120px"
                   />
                 </Avtar>
               ) : (
@@ -63,7 +61,6 @@ export default function Profile() {
                     type="button"
                     className="edit-profile-btn"
                     onClick={() => {
-                      setUploadAvtar(false);
                       setEdit(true);
                       setUpload(false);
                     }}
@@ -78,23 +75,9 @@ export default function Profile() {
                     onClick={() => {
                       setUpload(true);
                       setEdit(false);
-                      setUploadAvtar(false);
                     }}
                   >
                     <FontAwesomeIcon icon={faEdit} /> Photo
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="edit-profile-btn"
-                    onClick={() => {
-                      setUpload(false);
-                      setEdit(false);
-                      setUploadAvtar(false);
-                    }}
-                  >
-                    <FontAwesomeIcon icon={faEdit} /> Avtar
                   </button>
                 </li>
               </ul>
@@ -103,10 +86,8 @@ export default function Profile() {
           {Edit ?
             <EditForm id="edit-form" user={profile} setEdit={setEdit} /> : (
               Upload ?
-                <UploadImage setUpload={setUpload} /> : (
-                  UploadAvtar ?
-                    <></> :
-                    <ProfileBio data={profile} />)
+                <UploadImage setUpload={setUpload} /> :
+                    <ProfileBio data={profile} />
             )}
         </section>
       </div>
