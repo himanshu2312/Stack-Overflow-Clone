@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const API=axios.create({baseURL:'https://stack-overflow-2312.onrender.com'}) // for deployment api_Url
-const API=axios.create({baseURL:'http://localhost:5000'}) // for local api_Url
+const API=axios.create({baseURL:'https://stack-overflow-2312.onrender.com'}) // for deployment api_Url
+// const API=axios.create({baseURL:'http://localhost:5000'}) // for local api_Url
 
 API.interceptors.request.use((req)=>{
       if(localStorage.getItem('Profile')){
