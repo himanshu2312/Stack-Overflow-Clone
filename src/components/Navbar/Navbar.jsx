@@ -73,7 +73,7 @@ export default function Navbar() {
                     <img style={{ borderRadius: "50%" }}
                       src={profile?.profileImage}
                       alt="DP"
-                      width="50px"
+                      width="40px"
                     />
                   </Avtar>
                 ) : (
