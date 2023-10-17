@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import DisplayQuestion from "../../components/DisplayQuestion/DisplayQuestion";
 import Tags from "../../components/Tags/Tags";
 import Users from "../../components/Users/Users";
+import VedioPlayer from "../../components/VedioPlayer/VedioPlayer";
 
 export default function Home() {
   const pathname = useLocation().pathname;
@@ -21,11 +22,16 @@ export default function Home() {
             {pathname === "/tags" ? (
               <Tags />
             ) : (
-              <>{pathname === "/users" ? <Users /> : <DisplayQuestion />}</>
+              <>{pathname === "/users" ? <Users /> : (
+                pathname === "/player" ?
+                  <VedioPlayer /> :
+                  <DisplayQuestion />
+              )}
+              </>
             )}
           </>
         )}
-        {pathname !== "/tags" && pathname !== "/users" && <RightSideBar />}
+        {(pathname !== "/tags" && pathname !== "/users") ? <RightSideBar /> : <></>}
       </div>
     </div>
   );

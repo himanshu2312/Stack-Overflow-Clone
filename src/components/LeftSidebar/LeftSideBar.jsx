@@ -12,19 +12,19 @@ export default function LeftSideBar() {
         </NavLink>
         <div className="side-nav-div">
           <div><p>PUBLIC</p></div>
-            <NavLink to="/questions" className="side-nav-links" activeclass='active'>
-              <img src={Globe} alt="Globe" />
-              <p style={{paddingLeft:"10px"}}>Questions</p>
-            </NavLink>
-            <NavLink to="/tags" className="side-nav-links" activeclass='active' style={{paddingLeft:"40px"}}>
-              <p>Tags</p>
-            </NavLink>
-            <NavLink to="/users" className="side-nav-links" activeclass='active' style={{paddingLeft:"40px"}}>
-              <p>Users</p>
-            </NavLink>
-            {/* <NavLink to="/Companies" className="side-nav-links" activeclass='active' style={{paddingLeft:"40px"}}>
-              <p>Companies</p>
-            </NavLink> */}
+          <NavLink to="/questions" className="side-nav-links" activeclass='active'>
+            <img src={Globe} alt="Globe" />
+            <p style={{ paddingLeft: "10px" }}>Questions</p>
+          </NavLink>
+          <NavLink to="/tags" className="side-nav-links" activeclass='active' style={{ paddingLeft: "40px" }}>
+            <p>Tags</p>
+          </NavLink>
+          <NavLink to="/users" className="side-nav-links" activeclass='active' style={{ paddingLeft: "40px" }}>
+            <p>Users</p>
+          </NavLink>
+          <NavLink to="/player" className="side-nav-links" activeclass='active' style={{ paddingLeft: "40px" }}>
+            <p>Vedio Player</p>
+          </NavLink>
         </div>
       </nav>
     </div>
