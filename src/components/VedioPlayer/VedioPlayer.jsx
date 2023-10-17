@@ -10,9 +10,7 @@ export default function VedioPlayer() {
     e.preventDefault();
     const video = vedioRef.current;
     const videoDuration = video.duration;
-    const seekAmount = 10; // Adjust as needed (in seconds)
-
-    // Calculate the target seek time based on the current playback time
+    const seekAmount = 10; 
     const currentTime = video.currentTime;
     let targetTime;
 
@@ -21,11 +19,7 @@ export default function VedioPlayer() {
     } else {
       targetTime = currentTime + seekAmount;
     }
-
-    // Ensure the target time is within the valid seekable range
     targetTime = Math.max(0, Math.min(targetTime, videoDuration));
-
-    // Seek to the target time
     video.currentTime = targetTime;
   }
 
