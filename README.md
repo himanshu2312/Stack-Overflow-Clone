@@ -2,6 +2,9 @@
 
 [Click here](https://stack-overflow-2312.netlify.app)
 
+# NOTE:
+This API may take some time for the first time to give a response as it is hosted on an unpaid platform. But the UI will work fine
+
 # Stack Overflow Clone
 
 This website is a question forum and made to look like Stack Overflow.
